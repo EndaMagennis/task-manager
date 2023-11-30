@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link
@@ -15,7 +22,28 @@
     <title>Task Manager</title>
   </head>
   <body>
-    Hello World!
+    <header>
+      <nav class="light-green darken-2">
+        <div class="nav-wrapper">
+          <a href="{{ url_for('home') }}" class="brand-logo">Logo</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+            ><i class="fas fa-bars"></i
+          ></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="">New Task</a></li>
+            <li><a href="">Categories</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="">New Task</a></li>
+        <li><a href="">Categories</a></li>
+      </ul>
+    </header>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
