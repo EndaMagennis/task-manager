@@ -44,6 +44,22 @@
       </ul>
     </header>
 
+    <main class="container">{% block content %} {% endblock %}</main>
+
+    <footer class="page-footer light-green darken-2">
+      <div class="footer-copyright">
+        <div class="container">
+          For Educational purposes only!
+          <a
+            href="https://codeinstitute.net"
+            class="white-text right"
+            target="_blank"
+            >&copy; Code Institute</a
+          >
+        </div>
+      </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
