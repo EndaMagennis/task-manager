@@ -5,7 +5,8 @@ from taskmanager import db
 class Category(db.Model):
     # schema for Category model
     id = db.Column(db.Integer, primary_key=True)  # Primary key column
-    category_name = db.Column(db.String(25), unique=True, nullable=False)  # Category name column
+    category_name = db.Column(
+        db.String(25), unique=True, nullable=False)  # Category name column
     # Define a relationship between Category and Task models
     tasks = db.relationship(
         "Task",  # The other model in the relationship
@@ -22,14 +23,18 @@ class Category(db.Model):
 class Task(db.Model):
     # schema for Task model
     id = db.Column(db.Integer, primary_key=True)  # Primary key column
-    task_name = db.Column(db.String(50), unique=True, nullable=False)  # Task name column
-    task_description = db.Column(db.Text, nullable=False)  # Task description column
-    is_urgent = db.Column(db.Boolean, default=False, nullable=False)  # Urgency flag column
+    task_name = db.Column(db.String(50), unique=True,
+                          nullable=False)  # Task name column
+    task_description = db.Column(
+        db.Text, nullable=False)  # Task description column
+    is_urgent = db.Column(db.Boolean, default=False,
+                          nullable=False)  # Urgency flag column
     due_date = db.Column(db.Date, nullable=False)  # Due date column
     # Foreign key column linking to the Category model
     category_id = db.Column(
         db.Integer,
-        db.ForeignKey("category.id", ondelete="CASCADE"),  # Reference to the Category model
+        # Reference to the Category model
+        db.ForeignKey("category.id", ondelete="CASCADE"),
         nullable=False
     )
 
