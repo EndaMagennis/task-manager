@@ -49,7 +49,7 @@ def add_category():
 
 @app.route("/edit_category/<int:category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
-    # Get the category with the given id, or return a 404 error if it doesn't exist
+    # Get the category with given id, or return a 404 if it doesn't exist
     category = Category.query.get_or_404(category_id)
     # If the request method is POST
     if request.method == "POST":
@@ -59,7 +59,7 @@ def edit_category(category_id):
         db.session.commit()
         # Redirect to the categories page
         return redirect(url_for("categories"))
-    # If the request method is not POST, render the edit_category.html template with the category
+    # If the request is not POST, render the edit_category.html template
     return render_template("edit_category.html", category=category)
 
 
@@ -92,3 +92,24 @@ def add_task():
         return redirect(url_for('home'))
     # If the request method is not POST, render the add_task.html template
     return render_template("add_task.html", categories=categories)
+
+
+@app.route("/edit_task/<int:task_id>", methods=["GET", "POST"])
+def edit_task(task_id):
+    # Get the category with the given id, or return a 404 if it doesn't exist
+    task = Task.query.get_or_404(task_id)
+    categories = list(Category.query.order_by(Category.category_name).all())
+    # If the request method is POST
+    if request.method == "POST":
+        # Update the category name with the value from the form
+        task.task_name = request.form.get("task_name"),
+        task.task_description = request.form.get("task_description"),
+        task.is_urgent = bool(
+            True if request.form.get("is_urgent") else False),
+        task.due_date = request.form.get("due_date"),
+        task.category_id = request.form.get("category_id"),
+        # Commit the session to save the changes
+        db.session.commit()
+        # Redirect to the categories page
+    # If the request method POST, render the edit_category.html template
+    return render_template("edit_task.html", task=task, categories=categories)

@@ -1,11 +1,12 @@
 # Import the os module to interact with the operating system
+from taskmanager import routes
 import os
 
 # Import Flask to create an instance of the Flask web application
 from flask import Flask
 
 # Import SQLAlchemy to interact with the database
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy, Boolean
 
 # Check if the env.py file exists and import it if it does
 if os.path.exists("env.py"):
@@ -20,6 +21,3 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
 
 # Create an instance of SQLAlchemy and store it in a variable called db
 db = SQLAlchemy(app)
-
-# Import the routes module from the taskmanager package
-from taskmanager import routes

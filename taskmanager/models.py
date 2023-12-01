@@ -1,9 +1,8 @@
 # Import the db object from the taskmanager package
 from taskmanager import db
 
+
 # Define the Category model
-
-
 class Category(db.Model):
     # schema for Category model
     id = db.Column(db.Integer, primary_key=True)  # Primary key column
@@ -12,8 +11,8 @@ class Category(db.Model):
     # Define a relationship between Category and Task models
     tasks = db.relationship(
         "Task",  # The other model in the relationship
-        backref="category",  # Reference to the Category model from the Task model
-        cascade="all, delete",  # Delete all related tasks when a category is deleted
+        backref="category",  # Reference to  Category model from the Task model
+        cascade="all, delete",  # Delete tasks related when category is deleted
         lazy=True  # Load the data as necessary, not upfront
     )
 
@@ -21,9 +20,8 @@ class Category(db.Model):
     def __repr__(self):
         return self.category_name
 
+
 # Define the Task model
-
-
 class Task(db.Model):
     # schema for Task model
     id = db.Column(db.Integer, primary_key=True)  # Primary key column
