@@ -14,4 +14,7 @@ $(document).ready(function () {
 
     // select initialisation
     $('select').formSelect();
+
+    //collapsible initialisation
+    $('.collapsible').collapsible();
 });

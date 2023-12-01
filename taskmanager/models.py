@@ -2,6 +2,8 @@
 from taskmanager import db
 
 # Define the Category model
+
+
 class Category(db.Model):
     # schema for Category model
     id = db.Column(db.Integer, primary_key=True)  # Primary key column
@@ -20,6 +22,8 @@ class Category(db.Model):
         return self.category_name
 
 # Define the Task model
+
+
 class Task(db.Model):
     # schema for Task model
     id = db.Column(db.Integer, primary_key=True)  # Primary key column

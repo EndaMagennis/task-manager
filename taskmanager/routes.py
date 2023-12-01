@@ -10,8 +10,9 @@ from taskmanager.models import Category, Task
 
 @app.route("/")
 def home():
+    tasks = list(Task.query.order_by(Task.id).all())
     # Render the tasks.html template
-    return render_template("tasks.html")
+    return render_template("tasks.html", tasks=tasks)
 
 # Define the route for the categories page
 
