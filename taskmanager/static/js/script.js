@@ -1,20 +1,19 @@
 $(document).ready(function () {
-    // sidenav initialisation
-    $('.sidenav').sidenav();
+  // sidenav initialisation
+  $(".sidenav").sidenav();
 
-    // modal initialisation
-    $('.modal').modal();
+  // modal initialisation
+  $(".modal").modal();
 
-    // datepicker initialisation
-    $('.datepicker').datepicker({
-        format: "dd mmmm, yyyy",
-        i18n: { done: "Select" }
-    }
-    );
+  // datepicker initialisation
+  $(".datepicker").datepicker({
+    format: "dd mmmm, yyyy",
+    i18n: { done: "Select" },
+  });
 
-    // select initialisation
-    $('select').formSelect();
+  // select initialisation
+  $("select").formSelect();
 
-    //collapsible initialisation
-    $('.collapsible').collapsible();
+  //collapsible initialisation
+  $(".collapsible").collapsible();
 });

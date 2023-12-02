@@ -14,18 +14,15 @@ if os.path.exists("env.py"):
 # Create an instance of Flask and store it in a variable called app
 app = Flask(__name__)
 
-
+# Configure the secret key and the database URI for the Flask application
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 if os.environ.get("DEVELOPMENT") == "True":
-    app.config["SQLAlchemy_DATABASE_URI"] = os.environ.get("DB_URL")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
 else:
     uri = os.environ.get("DATABASE_URL")
     if uri.startswith("postgres://"):
         uri = uri.replace("postgres://", "postgresql://", 1)
-    app.config["SQLAlchemy_DATABASE_URI"] = uri
-
-# Configure the secret key and the database URI for the Flask application
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
-
+    app.config["SQLALCHEMY_DATABASE_URL"] = uri
 # Create an instance of SQLAlchemy and store it in a variable called db
 db = SQLAlchemy(app)
 
